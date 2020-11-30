@@ -35,6 +35,28 @@ export const loadStyles = env => ({
           { loader: 'sass-loader', options: { sourceMap: true } },
         ],
       },
+      {
+        test: /\.css$/,
+        use: [
+          {
+            loader:
+              env === 'production'
+                ? MiniCssExtractPlugin.loader
+                : 'style-loader',
+            options: {},
+          },
+          { loader: 'css-loader', options: { sourceMap: true } },
+          {
+            loader: 'postcss-loader',
+            options: {
+              sourceMap: true,
+              postcssOptions: {
+                config: `${ROOT_DIR}/postcss.config.js`,
+              },
+            },
+          },
+        ],
+      },
     ],
   },
 });
