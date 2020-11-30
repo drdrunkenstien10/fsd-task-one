@@ -15,8 +15,12 @@ export default () =>
   merge(
     {
       entry: [SRC_DIR],
+      resolve: {
+        extensions: ['.js', '.jsx', '.scss', '.json'],
+      },
     },
     modules.setHtml(env),
     modules.loadStyles(env),
-    modules.cleanDir(env)
+    modules.cleanDir(env),
+    modules.transpileCode()
   );
