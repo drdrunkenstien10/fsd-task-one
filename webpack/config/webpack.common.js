@@ -22,5 +22,7 @@ export default () =>
     modules.setHtml(env),
     modules.loadStyles(env),
     modules.cleanDir(env),
-    modules.transpileCode()
+    modules.transpileCode(),
+    modules.setPug(),
+    modules.loadAssets()
   );

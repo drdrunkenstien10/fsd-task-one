@@ -1,0 +1,11 @@
+extends ../layout/main.pug
+
+block variables
+    - const title = 'pug';
+    -const pageClass = 'form'
+
+block content
+    h1 Hello Form!!!
+    picture
+        source(srcset="./assets/images/1.webp")
+        img(src="./assets/images/1.jpg" alt="1 image" loading="lazy" width="700" height="500")
