@@ -9,12 +9,19 @@ export const loadAssets = () => ({
   module: {
     rules: [
       {
-        test: /\.(png|jpg|jpeg|webp|gif)$/,
+        test: /\.(png|jpg|jpeg|webp|gif|svg)$/,
         use: {
           loader: 'file-loader',
           options: {},
         },
       },
+      // {
+      //   test: /\.(png|jpg|jpeg|webp|gif|svg)$/,
+      //   use: {
+      //     loader: 'url-loader',
+      //     options: {},
+      //   },
+      // },
     ],
   },
   plugins: [

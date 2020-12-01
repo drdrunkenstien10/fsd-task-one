@@ -2,10 +2,11 @@ extends ../layout/main.pug
 
 block variables
     - const title = 'pug';
-    -const pageClass = 'form'
+    -const pageClass = 'form-elements'
+
+include ../ui/form-elements/text_field/text_field.pug
+include ../ui/form-elements/dropdown/dropdown.pug
 
 block content
-    h1 Hello Form!!!
-    picture
-        source(srcset="./assets/images/1.webp")
-        img(src="./assets/images/1.jpg" alt="1 image" loading="lazy" width="700" height="500")
+    +text-field('text', 'text-field', 'text-field', 'text field', 'Email')
+    +dropdown

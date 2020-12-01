@@ -1,21 +1,11 @@
 // Imports
 @import './imports.scss';
 
-:root {
-  --main-font: 'Montserrat', sans-serif;
-  --dark-shade-100: rgba(31, 32, 65, 1);
-  --dark-shade-25: rgba(31, 32, 65, 0.25);
-  --dark-shade-05: rgba(31, 32, 65, 0.05);
-  --white: #ffffff;
-}
-
 html {
   font-family: var(--main-font);
+  font-size: var(--main-font-size);
 }
 
 body {
-  background-color: rgb(137, 34, 141);
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  background-color: #e5e5e5;
 }

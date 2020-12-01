@@ -10,3 +10,5 @@ export const BUILD_DIR = resolve(ROOT_DIR, 'build');
 export const HTML_DIR = resolve(ROOT_DIR, 'src/html');
 export const PUG_DIR = resolve(ROOT_DIR, 'src/pug');
 export const ASSETS_DIR = resolve(ROOT_DIR, 'src/assets');
+export const PORT = 5001;
+export const HOST = 'localhost';

@@ -22,6 +22,13 @@ module.exports = {
     'no-console': 'off',
     'arrow-parens': 'off',
     'import/no-extraneous-dependencies': 'off',
+    'no-unused-vars': 'off',
+    'import/prefer-default-export': 'off',
+    'implicit-arrow-linebreak': 'off',
+    'comma-dangle': 'off',
+    'no-param-reassign': 'off',
+    'no-shadow': 'off',
+    'function-paren-newline': 'off',
   },
   ignorePatterns: ['webpack/**/*.js', 'build/**/*.js', 'dist/**/*.js'],
 };

@@ -13,6 +13,7 @@ export default () =>
     output: {
       filename: '[name].[contenthash].js',
       path: BUILD_DIR,
+      publicPath: '',
     },
     optimization: {
       splitChunks: {

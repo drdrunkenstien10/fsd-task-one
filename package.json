@@ -5,7 +5,7 @@
   "main": "index.js",
   "private": true,
   "scripts": {
-    "dev": "cross-env NODE_ENV=development node -r esm \"./node_modules/.bin/webpack\" --config=\"./webpack/config/webpack.dev.js\"",
+    "dev": "cross-env NODE_ENV=development node -r esm \"./node_modules/.bin/webpack\" serve --hot --config=\"./webpack/config/webpack.dev.js\"",
     "prod": "cross-env NODE_ENV=production node -r esm \"./node_modules/.bin/webpack\" --config=\"./webpack/config/webpack.prod.js\"",
     "eslint:fix": "eslint ./src --fix"
   },
@@ -55,8 +55,10 @@
     "pug-loader": "^2.4.0",
     "sass-loader": "^10.1.0",
     "style-loader": "^2.0.0",
+    "url-loader": "^4.1.1",
     "webpack": "^5.9.0",
     "webpack-cli": "^4.2.0",
+    "webpack-dev-server": "^3.11.0",
     "webpack-merge": "^5.4.0"
   },
   "husky": {

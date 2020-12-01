@@ -1,0 +1,113 @@
+.dropdown {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 32rem;
+  height: 4.4rem;
+  border: 0.1rem solid var(--dark-shade-25);
+  border-radius: 4px 4px 0px 0px;
+  background: var(--white);
+  position: relative;
+
+  &__label {
+    margin-left: 1.5rem;
+    font-size: 1.4rem;
+    line-height: 1.8rem;
+    color: var(--dark-shade-75);
+  }
+
+  &__expand {
+    width: 4rem;
+    height: 4rem;
+    border: none;
+    background: url(../pug/ui/form-elements/dropdown/images/expand_more.svg)
+      center no-repeat;
+    &.open {
+      transform: rotateZ(180deg);
+    }
+  }
+
+  &__options {
+    display: none;
+    position: absolute;
+    content: '';
+    top: 100%;
+    left: -1px;
+    width: 32rem;
+    min-height: 15.9rem;
+    padding: 0.7rem 0.7rem 1.3rem 1.5rem;
+    background-color: var(--white);
+    border-radius: 0px 0px 4px 4px;
+    border: 0.1rem solid var(--dark-shade-25);
+
+    &.open {
+      display: block;
+    }
+  }
+
+  &__option {
+    display: flex;
+    margin-bottom: 0.7rem;
+
+    &-title {
+      flex: 1 1 auto;
+      font-family: Montserrat;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 12px;
+      line-height: 15px;
+      text-transform: uppercase;
+      color: var(--dark-shade-100);
+    }
+
+    &-btn {
+      width: 3rem;
+      height: 3rem;
+      border: 0.1rem solid var(--dark-shade-50);
+      border-radius: 22px;
+      background-color: var(--white);
+    }
+
+    &-btn:disabled {
+      border: 0.1rem solid var(--dark-shade-25);
+    }
+
+    &-value {
+      width: 3.2rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: Montserrat;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 1.2rem;
+      line-height: 1.5rem;
+      text-align: center;
+      text-transform: uppercase;
+      color: var(--dark-shade-100);
+    }
+  }
+  &__filter {
+    display: flex;
+    justify-content: space-between;
+    flex-flow: row-reverse;
+    align-items: center;
+    margin-top: 1.9rem;
+
+    &-btn {
+      padding: 0;
+      border: none;
+      background-color: var(--white);
+      font-family: Montserrat;
+      font-weight: bold;
+      font-size: 1.2rem;
+      line-height: 1.5rem;
+      text-transform: uppercase;
+      color: var(--purple);
+    }
+
+    &-btn.hidden {
+      display: none;
+    }
+  }
+}
