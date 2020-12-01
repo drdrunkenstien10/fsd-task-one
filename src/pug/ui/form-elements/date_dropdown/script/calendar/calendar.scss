@@ -1,0 +1,62 @@
+.calendar {
+  width: 32rem;
+  height: 36.9rem;
+  padding: 2rem;
+  border: 0.1rem solid var(--dark-shade-25);
+  box-shadow: 0px 10px 20px var(--dark-shade-05);
+  border-radius: 4px;
+  background-color: var(--white);
+  position: absolute;
+  content: '';
+  top: 100%;
+  left: 0;
+
+  &__slider {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__btn {
+    width: 2.4rem;
+    height: 2.4rem;
+    border: none;
+    outline-width: 0;
+
+    &_back {
+      background: url(../pug/ui/form-elements/date_dropdown/images/arrow_back.svg)
+        no-repeat center;
+    }
+
+    &_forward {
+      background: url(../pug/ui/form-elements/date_dropdown/images/arrow_forward.svg)
+        no-repeat center;
+    }
+  }
+
+  &__current-date {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 19px;
+    line-height: 23px;
+  }
+
+  &__week-days {
+    display: flex;
+  }
+
+  &__week-day {
+    width: 4rem;
+    height: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 15px;
+    color: var(--purple);
+  }
+}

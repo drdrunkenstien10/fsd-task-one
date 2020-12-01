@@ -1,5 +1,18 @@
 // Helpers
-import { createNodeTemplate } from './helpers/dom_manipulation';
+import { createNodeTemplate } from '../../../../../script/helpers/dom_manipulation';
+
+// How Much Guests Function
+const howMouchGuests = state => {
+  const guests = state.reduce((acc, n) => acc + n.value, 0);
+  switch (guests) {
+    case 0:
+      return 'Сколько гостей';
+    case 1:
+      return '1 гость';
+    default:
+      return `${guests} гостей`;
+  }
+};
 
 // Create Dropdown
 export const createDropdown = (selector, options) => {
@@ -126,6 +139,7 @@ export const createDropdown = (selector, options) => {
   // Selectors
   const $expandBtn = document.querySelector('.dropdown__expand');
   const $options = document.querySelector('.dropdown__options');
+  const $label = document.querySelector('.dropdown__label');
 
   // Event Handlers
   const expandHandler = e => {
@@ -142,19 +156,19 @@ export const createDropdown = (selector, options) => {
       if (dataset.type === 'inc') {
         state[dataset.id].value += 1;
         $options.innerHTML = createOptionsAndFilter(state);
-        return;
-      }
-
-      if (dataset.type === 'dec') {
+        $label.textContent = howMouchGuests(state);
+      } else if (dataset.type === 'dec') {
         if (state[dataset.id] <= 0) return;
         state[dataset.id].value -= 1;
         $options.innerHTML = createOptionsAndFilter(state);
+        $label.textContent = howMouchGuests(state);
         return;
       }
 
       if (dataset.type === 'reset') {
         state = options.map(option => ({ ...option }));
         $options.innerHTML = createOptionsAndFilter(state);
+        $label.textContent = howMouchGuests(state);
       }
     }
   };

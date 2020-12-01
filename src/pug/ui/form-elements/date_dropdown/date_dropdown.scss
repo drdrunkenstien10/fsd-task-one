@@ -1,0 +1,51 @@
+.date-dropdown {
+  width: 32rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+
+  &__section {
+    display: flex;
+    flex-flow: column;
+  }
+
+  &__date-picker {
+    width: 15rem;
+    height: 4.4rem;
+    padding-left: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    background: var(--white);
+    border: 1px solid var(--dark-shade-25);
+    border-radius: 0.4rem;
+  }
+
+  &__date {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Montserrat;
+    font-size: 1.4rem;
+    line-height: 1.8rem;
+    color: var(--dark-shade-75);
+  }
+
+  &__label {
+    margin-bottom: 0.55rem;
+    font-family: Montserrat;
+    font-weight: bold;
+    font-size: 1.2rem;
+    line-height: 1.5rem;
+    text-transform: uppercase;
+    color: var(--dark-shade-100);
+  }
+
+  &__btn {
+    width: 4.4rem;
+    height: 4.4rem;
+    border: none;
+    background: url(../pug/ui/form-elements/dropdown/images/expand_more.svg)
+      no-repeat center;
+  }
+}
