@@ -8,6 +8,7 @@
   border-radius: 4px 4px 0px 0px;
   background: var(--white);
   position: relative;
+  z-index: 100;
 
   &__label {
     margin-left: 1.5rem;
@@ -22,15 +23,16 @@
     border: none;
     background: url(../pug/ui/form-elements/dropdown/images/expand_more.svg)
       center no-repeat;
+    transition: all 200ms ease;
     &.open {
       transform: rotateZ(180deg);
     }
   }
 
   &__options {
-    display: none;
     position: absolute;
     content: '';
+    z-index: 1;
     top: 100%;
     left: -1px;
     width: 32rem;
@@ -39,14 +41,19 @@
     background-color: var(--white);
     border-radius: 0px 0px 4px 4px;
     border: 0.1rem solid var(--dark-shade-25);
+    transition: all 300ms ease;
+    transform: translateY(-50%) scaleY(0%);
 
     &.open {
       display: block;
+      transition: all 300ms ease;
+      transform: translateY(0%) scaleY(100%);
     }
   }
 
   &__option {
     display: flex;
+    align-items: center;
     margin-bottom: 0.7rem;
 
     &-title {

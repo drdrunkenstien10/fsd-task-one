@@ -1,9 +1,11 @@
 // Helpers
 import { createNodeTemplate } from './helpers/dom_manipulation';
 
+// Create Dropdown
 export const createDropdown = (selector, options) => {
-  const defaultOptions = [...options];
-  let state = defaultOptions.map(option => ({ ...option }));
+  // State
+  let state = options.map(option => ({ ...option }));
+
   // Label
   const dropdownLabel = createNodeTemplate(
     'span',
@@ -25,6 +27,7 @@ export const createDropdown = (selector, options) => {
       [{ name: 'class', value: 'dropdown__option-title' }],
       title
     );
+
     const optionIncBtn = createNodeTemplate(
       'button',
       [
@@ -34,6 +37,7 @@ export const createDropdown = (selector, options) => {
       ],
       '+'
     );
+
     const optionDecBtn = createNodeTemplate(
       'button',
       [
@@ -44,11 +48,13 @@ export const createDropdown = (selector, options) => {
       ],
       '-'
     );
+
     const optionValue = createNodeTemplate(
       'span',
       [{ name: 'class', value: 'dropdown__option-value' }],
       value
     );
+
     return createNodeTemplate(
       'div',
       [{ name: 'class', value: 'dropdown__option' }],
@@ -59,7 +65,7 @@ export const createDropdown = (selector, options) => {
   // Filter
   const createDropdownFilter = state => {
     const sumOfValues = state.reduce((acc, n) => acc + n.value, 0);
-    console.log(sumOfValues);
+
     const reset = createNodeTemplate(
       'button',
       [
@@ -74,6 +80,7 @@ export const createDropdown = (selector, options) => {
       ],
       'Очистить'
     );
+
     const submit = createNodeTemplate(
       'button',
       [
@@ -82,6 +89,7 @@ export const createDropdown = (selector, options) => {
       ],
       'Применить'
     );
+
     return createNodeTemplate(
       'div',
       [{ name: 'class', value: 'dropdown__filter' }],
@@ -119,38 +127,39 @@ export const createDropdown = (selector, options) => {
   const $expandBtn = document.querySelector('.dropdown__expand');
   const $options = document.querySelector('.dropdown__options');
 
-  // Events
+  // Event Handlers
   const expandHandler = e => {
     $options.classList.toggle('open');
     $expandBtn.classList.toggle('open');
   };
 
   const optionsHandler = e => {
+    // Dataset
     const { dataset } = e.target;
+
+    // Does contain type data attribute?
     if ('type' in dataset === true) {
       if (dataset.type === 'inc') {
-        console.log(options, 'opt1');
         state[dataset.id].value += 1;
-        console.log(state);
-        console.log(defaultOptions, 'opt');
         $options.innerHTML = createOptionsAndFilter(state);
         return;
       }
+
       if (dataset.type === 'dec') {
         if (state[dataset.id] <= 0) return;
         state[dataset.id].value -= 1;
-        console.log(state);
         $options.innerHTML = createOptionsAndFilter(state);
         return;
       }
+
       if (dataset.type === 'reset') {
-        state = defaultOptions.map(option => ({ ...option }));
-        console.log(state);
+        state = options.map(option => ({ ...option }));
         $options.innerHTML = createOptionsAndFilter(state);
       }
     }
   };
 
+  // Add Handlers
   $expandBtn.addEventListener('click', expandHandler);
   $options.addEventListener('click', optionsHandler);
 };
