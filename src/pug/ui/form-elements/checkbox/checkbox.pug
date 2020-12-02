@@ -1,0 +1,4 @@
+mixin checkbox(className, label,id)
+    div(class=className)
+        input(type='checkbox' class=className + '__input' id=id)
+        label(class=className + '__label' for=id)= label

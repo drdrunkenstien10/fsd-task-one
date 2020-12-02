@@ -1,0 +1,33 @@
+.checkbox {
+  &__input {
+    display: none;
+    &:checked + .checkbox__label::before {
+      border: 1px solid #bc9cff;
+      background: url(../pug/ui/form-elements/checkbox/images/checked.svg)
+        no-repeat center;
+    }
+  }
+
+  &__label {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 3rem;
+    font-family: Montserrat;
+    font-size: 1.4rem;
+    line-height: 1.8rem;
+    color: var(--dark-shade-50);
+    &:before {
+      position: absolute;
+      content: '';
+      display: block;
+      left: -3rem;
+      width: 20px;
+      height: 20px;
+      background: #ffffff;
+      border: 1px solid rgba(31, 32, 65, 0.25);
+      border-radius: 4px;
+    }
+  }
+}

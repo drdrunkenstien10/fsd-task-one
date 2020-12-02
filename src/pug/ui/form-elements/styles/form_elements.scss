@@ -1,6 +1,14 @@
 .form-elements {
   display: flex;
-  flex-flow: column;
+  flex-flow: row wrap;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
+}
+
+.column {
+  padding: 2rem;
+  flex: 1 1 33.33%;
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-start;
 }
