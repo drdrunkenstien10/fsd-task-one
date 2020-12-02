@@ -3,7 +3,7 @@ import { createNodeTemplate } from '../../../../../../script/helpers/dom_manipul
 import { getMonth } from '../../../../../../script/helpers/date';
 
 export const createCalendar = (selector, options) => {
-  const state = {
+  let state = {
     date: new Date(),
     currentMonth: getMonth(new Date()),
     currentYear: new Date().getFullYear(),
@@ -39,8 +39,8 @@ export const createCalendar = (selector, options) => {
   };
 
   // Days of Months
-  const createDaysOfMonth = () => {
-    const weekDays = ['пн', 'вт', 'ср', 'чт', 'пт', 'сб', 'вс'];
+  const createDaysOfMonth = state => {
+    const weekDays = ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'];
     const daysOfTheWeek = weekDays
       .map(day =>
         createNodeTemplate(
@@ -57,18 +57,14 @@ export const createCalendar = (selector, options) => {
       daysOfTheWeek
     );
 
-    const daysInMonth = new Date(
-      state.currentYear,
-      state.date.getMonth(),
-      0
-    ).getDate();
+    const daysInMonth = () =>
+      new Date(state.currentYear, state.date.getMonth() + 1, 0).getDate();
 
-    console.log(typeof daysInMonth, daysInMonth);
-    const arr = [...new Array(30)].fill(0).map((_, i) => i);
+    const arr = [...new Array(daysInMonth())].fill(0).map((_, i) => i);
     console.log(arr);
 
     const daysOfTheMonth = () => {
-      const arr = [...new Array(30)]
+      const arr = [...new Array(daysInMonth())]
         .fill(0)
         .map((_, i) =>
           createNodeTemplate(
@@ -95,12 +91,81 @@ export const createCalendar = (selector, options) => {
     );
   };
 
+  // Filter
+  const createFilter = () => {
+    const reset = createNodeTemplate(
+      'button',
+      [
+        { name: 'class', value: 'calendar__filter-item' },
+        { name: 'data-type', value: 'reset' },
+      ],
+      'очистить'
+    );
+
+    const submit = createNodeTemplate(
+      'button',
+      [
+        { name: 'class', value: 'calendar__filter-item' },
+        { name: 'data-type', value: 'submit' },
+      ],
+      'применить'
+    );
+
+    return createNodeTemplate(
+      'div',
+      [
+        {
+          name: 'class',
+          value: 'calendar__filter',
+        },
+      ],
+      submit + reset
+    );
+  };
+
   // Wrapper
   const calendarWrapper = createNodeTemplate(
     'div',
     [{ name: 'class', value: 'calendar' }],
-    createCalendarSlider() + createDaysOfMonth()
+    createCalendarSlider() + createDaysOfMonth(state) + createFilter()
   );
 
   selector.insertAdjacentHTML('beforeend', calendarWrapper);
+
+  // Events
+  const $btnBack = document.querySelector('.calendar__btn_back');
+  const $btnForward = document.querySelector('.calendar__btn_forward');
+  const $currentDate = document.querySelector('.calendar__current-date');
+  const $calendarMonth = document.querySelector('.calendar__month');
+
+  const setNextMonthHandler = () => {
+    const newDate = new Date(state.currentYear, state.date.getMonth() + 1);
+    console.log(newDate);
+    state = {
+      ...state,
+      date: newDate,
+      currentMonth: getMonth(newDate),
+      currentYear: newDate.getFullYear(),
+    };
+    $currentDate.textContent = `${state.currentMonth} ${state.currentYear}`;
+    console.log($calendarMonth);
+    $calendarMonth.innerHTML = createDaysOfMonth(state);
+  };
+
+  const setPrevMonthHandler = () => {
+    const newDate = new Date(state.currentYear, state.date.getMonth() - 1);
+    console.log(newDate);
+    state = {
+      ...state,
+      date: newDate,
+      currentMonth: getMonth(newDate),
+      currentYear: newDate.getFullYear(),
+    };
+    $currentDate.textContent = `${state.currentMonth} ${state.currentYear}`;
+    console.log($calendarMonth);
+    $calendarMonth.innerHTML = createDaysOfMonth(state);
+  };
+
+  $btnForward.addEventListener('click', setNextMonthHandler);
+  $btnBack.addEventListener('click', setPrevMonthHandler);
 };

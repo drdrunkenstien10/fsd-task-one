@@ -3,8 +3,8 @@ include ../../form-elements/button/button.pug
 block variables
     - const items = ['О нас','Услуги', 'Вакансии', 'Новости', 'Соглашения'];
 
-mixin header
-    header.header
+mixin header(className, isLogin)
+    header(class=className + ' header')
         .container.header__container
             .header__logo
             nav.nav.header__nav
@@ -16,5 +16,8 @@ mixin header
                         else
                             li.nav__item
                                 a.nav__link= val
-            +button('btn_shallow header__btn', "#", 'войти')
-            +button('btn_filled header__btn', "#", 'зарегистрироваться')
+            if isLogin
+                .header__user-name Юлий Цезарь 
+            else
+                +button('btn_shallow header__btn', "#", 'войти')
+                +button('btn_filled header__btn', "#", 'зарегистрироваться')
