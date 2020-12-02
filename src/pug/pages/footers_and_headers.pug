@@ -1,0 +1,10 @@
+extends ../layout/main.pug
+
+block variables
+    - const title = 'pug';
+    -const pageClass = 'footers-and-headers'
+
+include ../ui/footers_and_headers/header/header.pug
+
+block content
+    +header

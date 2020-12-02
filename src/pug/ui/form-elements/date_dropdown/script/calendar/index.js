@@ -57,10 +57,41 @@ export const createCalendar = (selector, options) => {
       daysOfTheWeek
     );
 
+    const daysInMonth = new Date(
+      state.currentYear,
+      state.date.getMonth(),
+      0
+    ).getDate();
+
+    console.log(typeof daysInMonth, daysInMonth);
+    const arr = [...new Array(30)].fill(0).map((_, i) => i);
+    console.log(arr);
+
+    const daysOfTheMonth = () => {
+      const arr = [...new Array(30)]
+        .fill(0)
+        .map((_, i) =>
+          createNodeTemplate(
+            'span',
+            [{ name: 'class', value: 'calendar__month-day' }],
+            i + 1
+          )
+        );
+      return arr;
+    };
+
+    console.log('days', daysOfTheMonth());
+
+    const monthDaysContainer = createNodeTemplate(
+      'div',
+      [{ name: 'class', value: 'calendar__month-days' }],
+      daysOfTheMonth().join('')
+    );
+
     return createNodeTemplate(
       'div',
       [{ name: 'class', value: 'calendar__month' }],
-      weekDaysContainer
+      weekDaysContainer + monthDaysContainer
     );
   };
 

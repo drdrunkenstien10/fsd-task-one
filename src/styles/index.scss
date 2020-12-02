@@ -6,6 +6,21 @@ html {
   font-size: var(--main-font-size);
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+li {
+  list-style-type: none;
+}
+
+.container {
+  max-width: 112rem;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
 body {
   background-color: #e5e5e5;
 }
