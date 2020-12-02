@@ -31,6 +31,24 @@
 
   &__item {
     margin-right: 2rem;
+    cursor: pointer;
+
+    &:nth-child(2) {
+      margin-right: 4rem;
+    }
+
+    &:nth-child(2),
+    &:nth-child(5) {
+      position: relative;
+      &::after {
+        position: absolute;
+        content: '';
+        width: 2.4rem;
+        height: 1.8rem;
+        background: url(../pug/ui/footers_and_headers/header/images/expand_more.svg)
+          center no-repeat;
+      }
+    }
   }
 
   &__link {
@@ -38,5 +56,12 @@
     font-size: 1.4rem;
     line-height: 1.7rem;
     color: var(--dark-shade-50);
+
+    &.active {
+      font-weight: bold;
+      font-size: 1.4rem;
+      line-height: 1.7rem;
+      color: var(--dark-shade-75);
+    }
   }
 }
