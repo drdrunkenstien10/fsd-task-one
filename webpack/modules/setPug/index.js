@@ -18,6 +18,7 @@ export const setPug = () => ({
         new HTMLWebpackPlugin({
           template: `${PUG_DIR}/pages/${page}`,
           filename: page.replace(/\.pug/, '.html'),
+          chunks: [`${page.replace(/\.pug/, '')}`],
         })
     ),
   ],

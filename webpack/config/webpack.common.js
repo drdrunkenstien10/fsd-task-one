@@ -14,7 +14,11 @@ const env = process.env.NODE_ENV;
 export default () =>
   merge(
     {
-      entry: [SRC_DIR],
+      entry: {
+        form_elements: [`${SRC_DIR}/form_elements.js`],
+        footers_and_headers: [`${SRC_DIR}/footers_and_headers.js`],
+        cards: [`${SRC_DIR}/cards.js`],
+      },
       resolve: {
         extensions: ['.js', '.jsx', '.scss', '.json'],
       },

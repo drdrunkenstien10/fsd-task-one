@@ -12,7 +12,7 @@ export const loadAssets = () => ({
         test: /\.(png|jpg|jpeg|webp|gif|svg)$/,
         use: {
           loader: 'file-loader',
-          options: {},
+          options: { name: 'assets/images/[name][contenthash].[ext]' },
         },
       },
       // {
