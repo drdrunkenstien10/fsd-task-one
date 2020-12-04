@@ -1,0 +1,21 @@
+.comment {
+  max-width: 71.1rem;
+  display: flex;
+  flex-flow: column;
+
+  &__head {
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  &__info {
+    display: flex;
+    flex-flow: column;
+    align-items: flex-start;
+  }
+
+  &__body {
+    width: 100%;
+    display: flex;
+  }
+}

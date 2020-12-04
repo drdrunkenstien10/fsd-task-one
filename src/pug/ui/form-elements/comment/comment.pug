@@ -1,0 +1,12 @@
+include ../like_button/like_button.pug
+
+mixin comment(photo_src, user_name, published_time, likes, text,id)
+    .comment
+        .comment__head
+            img.commet__photo(src=photo_src alt='user logo')
+            .comment__info
+                .comment___user-name= user_name
+                .comment__published-time= published_time
+        .comment__body
+            +like_button(likes,id)
+            .comment__text= text

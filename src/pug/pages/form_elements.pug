@@ -8,6 +8,7 @@ include ../ui/form-elements/text_field/text_field.pug
 include ../ui/form-elements/dropdown/dropdown.pug
 include ../ui/form-elements/date_dropdown/date_dropdown.pug
 include ../ui/form-elements/checkbox/checkbox.pug
+include ../ui/form-elements/comment/comment.pug
 
 block content
     .column
@@ -19,3 +20,5 @@ block content
         +checkbox('checkbox', 'Можно с питомцами','checkbox-ui-two')
         +checkbox('checkbox', 'Можно пригласить гостей (до 10 человек)','checkbox-ui-three')
     .column
+        +comment('./assets/user_logos/user_one.jpg', 'Мурад Сарафанов', '5 дней назад', '12','Великолепный матрас на кровати в основной спальне! А пуфик вообще потрясающий. И стены, действительно, шумоподавляющие. Выкрикивал комплименты повару — никто не жаловался из соседей.','like-id')
+        
